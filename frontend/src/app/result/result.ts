@@ -62,5 +62,9 @@ export class Result implements OnInit {
   closeModal() {
     this.showModal = false;
   }
+
+  isPassed(r: any): boolean {
+    return r.score >= r.total * 0.8;
+  }
   
 }

@@ -92,7 +92,7 @@
         <tbody>
           <tr 
             *ngFor="let r of allResults"
-            [class.bg-green-50]="r.score > r.total * 0.8"
+            [class.bg-green-50]="isPassed(r)"
             class="border-b hover:bg-gray-50 transition"
           >
             <td class="py-2">{{ r.name || '-' }}</td>

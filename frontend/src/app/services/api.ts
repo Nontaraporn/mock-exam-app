@@ -17,6 +17,7 @@ export class ApiService {
   submit(data: any) {
     return this.http.post(`${this.baseUrl}/submit`, data);
   }
+  
 
   getResults() {
     return this.http.get(`${this.baseUrl}/results`);

@@ -27,10 +27,6 @@ else
         options.UseSqlite("Data Source=/tmp/exam.db"));
 }
 
-// builder.Services.AddDbContext<AppDbContext>(options =>
-//     options.UseSqlite("Data Source=exam.db") // On Local
-//     //options.UseSqlite("Data Source=/tmp/exam.db") // On Deploy
-//     );
     
 builder.Services.AddScoped<ExamService>();
 
