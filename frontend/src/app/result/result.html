@@ -1,0 +1,118 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white shadow-xl rounded-2xl p-8 text-center w-80">
+
+    <h1 class="text-2xl font-bold mb-2 text-gray-800">
+      {{ name }}
+    </h1>
+
+    <p class="text-3xl font-semibold text-blue-600 mb-4">
+      {{ score }}/{{ total }}
+    </p>
+
+    <p class="text-green-500 font-medium mb-6">
+    {{
+      score === total ? "Perfect 🎯" :
+      score > total/2 ? "Good job 👍" :
+      score > total ? "IT CAN'T BE!? 😨" :
+        'Keep trying 💪'
+    }}
+    </p>
+
+    <button
+      (click)="back()"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg w-full transition">
+      Back
+    </button>
+
+    <button 
+      (click)="openModal()"
+      class="mt-4 bg-black text-white px-5 py-2 rounded-xl hover:opacity-80 transition"
+    >
+      Exam results for all Examinees
+    </button>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- # Popup # -->
+<div *ngIf="showModal" class="fixed inset-0 z-50 flex items-center justify-center">
+
+  <!-- BACKDROP -->
+  <div 
+    class="absolute inset-0 bg-black/40 backdrop-blur-sm"
+    (click)="closeModal()"
+  ></div>
+
+  <!-- MODAL -->
+  <div class="relative bg-white w-full max-w-2xl rounded-2xl shadow-2xl p-6">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold text-gray-800">
+        All Results
+      </h2>
+
+      <button 
+        (click)="closeModal()"
+        class="text-gray-400 hover:text-black text-xl"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- LOADING -->
+    <div *ngIf="isLoadingResults" class="text-center py-10 text-gray-400">
+      Loading results...
+    </div>
+
+    <!-- NO RESULT -->
+    <div *ngIf="!isLoadingResults && allResults.length === 0" 
+         class="text-center py-10 text-gray-400">
+      No results found
+    </div>
+
+    <!-- RESULT TABLE -->
+    <div *ngIf="!isLoadingResults && allResults.length > 0"
+         class="max-h-[400px] overflow-y-auto">
+
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-gray-500 border-b">
+            <th class="py-2 text-left">Name</th>
+            <th class="py-2 text-center">Score</th>
+            <th class="py-2 text-center">Total</th>
+            <th class="py-2 text-right">Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr 
+            *ngFor="let r of allResults"
+            [class.bg-green-50]="r.score > r.total * 0.8"
+            class="border-b hover:bg-gray-50 transition"
+          >
+            <td class="py-2">{{ r.name || '-' }}</td>
+
+            <td class="text-center font-medium">
+              {{ r.score }}
+            </td>
+
+            <td class="text-center text-gray-500">
+              / {{ r.total }}
+            </td>
+
+            <td class="text-right text-gray-400 text-xs">
+              {{ r.createdAt | date:'short' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>

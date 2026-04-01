@@ -1,0 +1,64 @@
+<div *ngIf="isLoading" class="text-center py-10">
+  Loading questions...
+</div>
+
+<div *ngIf="!isLoading && questions.length === 0">
+  No questions found
+</div>
+
+<div *ngIf="!isLoading">
+  <div class="min-h-screen bg-gray-100 flex justify-center py-10">
+    <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8">
+
+      <!-- Title -->
+      <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">
+        Coding Quiz
+      </h1>
+
+      <!-- Name Input -->
+      <div class="mb-6">
+        <label class="block text-gray-600 mb-2">Your Name</label>
+        <input
+          [(ngModel)]="name"
+          placeholder="Enter your name..."
+          class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      <!-- Questions -->
+      <div *ngFor="let q of questions; let i = index" class="mb-6">
+        
+        <p class="font-semibold text-gray-800 mb-2">
+          {{ i + 1 }}. {{ q.quizText }}
+        </p>
+
+        <div *ngFor="let c of q.choices" class="mb-2">
+          <label class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded-lg">
+            
+            <input
+              type="radio"
+              [name]="'q' + q.id"
+              (change)="selectAnswer(q.id, c.id)"
+              class="accent-blue-500"
+            />
+
+            <span class="text-gray-700">
+              {{ c.choiceText }}
+            </span>
+
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        (click)="submit()"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition duration-200"
+      >
+        Submit
+      </button>
+
+    </div>
+  </div>
+</div>
