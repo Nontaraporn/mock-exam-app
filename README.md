@@ -14,13 +14,13 @@
 ## Run
 
 ### Backend
-```cd backend/MockTest
-dotnet run```
+```cd backend/MockTest```
+```dotnet run```
 
 ### Frontend
-```cd frontend
-npm install
-npm run dev```
+```cd frontend```
+```npm install```
+```npm run dev```
 
 
 ## Live Demo
