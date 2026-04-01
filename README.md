@@ -6,23 +6,23 @@
 - Database: SQLite
 
 ## Features
-- ทำข้อสอบ 10 ข้อ
-- บันทึกคะแนนลง database
-- แสดงผลคะแนน
-- ดู history ผู้สอบ
+- Take a 10-question quiz
+- Save scores to the database
+- Display the quiz results
+- View user exam history
 
 ## Run
 
 ### Backend
-cd backend/MockTest
-dotnet run
+```cd backend/MockTest
+dotnet run```
 
 ### Frontend
-cd frontend
+```cd frontend
 npm install
-npm run dev
+npm run dev```
 
 
 ## Live Demo
 Frontend: https://XXXXX-app.vercel.app  
-Backend API: https://XXXXX-api.onrender.com/api/exam/quiz
+Backend API: https://mock-exam-app-2.onrender.com/api/exam/quiz
