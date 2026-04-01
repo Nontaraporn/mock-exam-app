@@ -16,8 +16,21 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=/tmp/exam.db"));
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite("Data Source=exam.db"));
+}
+else
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlite("Data Source=/tmp/exam.db"));
+}
+
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseSqlite("Data Source=exam.db") // On Local
+//     //options.UseSqlite("Data Source=/tmp/exam.db") // On Deploy
+//     );
     
 builder.Services.AddScoped<ExamService>();
 
@@ -33,7 +46,13 @@ app.UseCors("AllowAll");
 
 app.MapControllers();
 
-app.Run();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+}
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Urls.Add($"http://*:{port}");
+
+app.Run();
