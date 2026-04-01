@@ -21,3 +21,8 @@ dotnet run
 cd frontend
 npm install
 npm run dev
+
+
+## Live Demo
+Frontend: https://XXXXX-app.vercel.app  
+Backend API: https://XXXXX-api.onrender.com/api/exam/quiz
