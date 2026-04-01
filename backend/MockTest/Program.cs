@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=exam.db"));
+    options.UseSqlite("Data Source=/tmp/exam.db"));
     
 builder.Services.AddScoped<ExamService>();
 
@@ -31,8 +31,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowAll");
 
-// app.UseHttpsRedirection();
-
 app.MapControllers();
 
 app.Run();
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://*:{port}");
