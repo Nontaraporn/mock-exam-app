@@ -3,18 +3,18 @@
 A full-stack web application for taking quizzes, calculating scores, and storing results.  
 Designed with a clean architecture using Angular + .NET 8 Web API.
 
-## 📸 Screenshots
+## Screenshots
 
 ### 🧠 Quiz Page
-<img width="1480" height="821" alt="image" src="https://github.com/user-attachments/assets/d77d27bf-04a2-424b-a865-fa65bffa6629" />
+<img width="900" height="650" alt="image" src="https://github.com/user-attachments/assets/d77d27bf-04a2-424b-a865-fa65bffa6629" />
 
 
 ### 📊 Result Page
-<img width="1480" height="821" alt="image" src="https://github.com/user-attachments/assets/0866c2f9-3aeb-463e-bc6c-555a42b8c54d" />
+<img width="900" height="650" alt="image" src="https://github.com/user-attachments/assets/0866c2f9-3aeb-463e-bc6c-555a42b8c54d" />
 
 
 ### 📚 History Popup
-<img width="1480" height="821" alt="image" src="https://github.com/user-attachments/assets/58454722-5788-4fcf-8e9a-63a98f822554" />
+<img width="900" height="650" alt="image" src="https://github.com/user-attachments/assets/58454722-5788-4fcf-8e9a-63a98f822554" />
 
 ---
 
@@ -40,12 +40,12 @@ Designed with a clean architecture using Angular + .NET 8 Web API.
 
 ## ✨ Features
 
-- 🧠 Take a 10-question quiz (single choice per question)
-- 📊 Automatic score calculation
-- 💾 Save user name and score to database
-- 📄 Display result after submission
-- 📚 View exam history of all users
-- 🔄 Reset and retake the quiz
+- Take a 10-question quiz (single choice per question)
+- Automatic score calculation
+- Save user name and score to database
+- Display result after submission
+- View exam history of all users
+- Reset and retake the quiz
 
 ---
 
